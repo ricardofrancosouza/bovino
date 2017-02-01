@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script src="../angular.min.js"></script>
+<script src="controller.js"></script>
+</head>
+<body ng-app="app">
+ {{5+5}}  
+ <div ng-controller = "PessoaCtrl">   
+   Nome:  <input type="text" ng-model="pessoa.nome"/></p>
+   Idade: <input type="number" ng-model="pessoa.idade"/></p>
+   
+   <input type="button" value="Novo" ng-click = "limpar()" >  <input type="button" value="Salvar" ng-click = "adicionarpessoa(pessoa)" > <input type="button" value="Apagar" ng-click = "apagar()" ></p>
+    
+    
+         <table border = "1">
+                <tr ng-repeat = "pessoa in pessoas">
+                    <td ng-click = "selecionar(pessoa)">{{pessoa.nome}} </td>
+                    <td ng-bind = "pessoa.idade"> </td>
+                </tr>
+         </table>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<script type="text/javascript" 
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js" ></script>
+	<script type="text/javascript">
+		
+		var app = angular.module("app", []);
+		
+		app.controller("ctrl", function($scope) {
+			
+			$scope.produtos = [
+			  	{id: 1, nome: 'Pao', categoria: {id: 1, nome: 'alimentos'}},
+			  	{id: 2, nome: 'Sabao', categoria: {id: 2, nome: 'higiene'}},
+			  	{id: 3, nome: 'Refri', categoria: {id: 3, nome: 'bebidas'}}
+			];
+			
+			$scope.categorias = [
+			   	{id: 1, nome: 'alimentos'},
+			   	{id: 2, nome: 'higiene'},
+			   	{id: 3, nome: 'bebidas'}
+			];
+			
+			$scope.categoria = "";
+			
+			$scope.produto = "";
+			
+			$scope.selecionar = function(prod) {
+				$scope.produto = angular.copy( prod );    //HERE
+				$scope.categoria = prod.categoria;
+			}
+			
+			$scope.salvar = function() {
+				window.alert($scope.produto.id + " " + $scope.produto.nome + 
+						" " + $scope.produto.categoria + " " + $scope.produto.categoria.nome);
+			}
+			
+			$scope.$watch('categoria', function() {
+			    $scope.produto.categoria = $scope.categoria; 
+			}); 
+			
+			$scope.$watch('produto', function() {
+				$scope.categoria = $scope.produto.categoria;	
+			}); 
+			
+		})
+	
+	</script>
+</head>
+<body ng-app="app">
+	
+	<div ng-controller="ctrl">
+	
+		<p>id: <input type="text" ng-model="produto.id" /></p>
+		<p>nome: <input type="text" ng-model="produto.nome" /></p>
+		<p>categoria: <!-- <input type="text" ng-model="produto.categoria.nome" /> -->
+		<select ng-options="cat.nome for cat in categorias" ng-model="categoria"></select></p>
+		
+		<!-- <p><select ng-options="prod.nome for prod in produtos" ng-model="produto"></select></p> -->
+		
+		<table border="1">
+			<tr ng-repeat="prod in produtos">
+				<td>{{prod.id}}</td>
+				<td>{{prod.nome}}</td>
+				<td>{{prod.categoria.nome}}</td>
+				<td><a ng-click="selecionar(prod)">Selecionar</a></td>
+			</tr>
+		</table>
+
+		<p><select ng-options="cat.nome for cat in categorias" ng-model="categoria"></select></p>
+		
+		
+		<p><input type="button" value="Salvar" ng-click="salvar();" /></p>
+	</div>
+</body>
+</html>

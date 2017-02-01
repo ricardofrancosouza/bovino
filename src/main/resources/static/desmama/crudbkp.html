@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script src="../angular.min.js"></script>
+<script src = "../angular-ui-router.min.js"></script>
+<script src="controller.js"></script>
+</head>
+<body ng-app="app">
+ <div ng-controller = "DesmamaCtrl">   
+   Codigo:    <input type="number" ng-model="desmama.identifier"/></p>
+   Data Desmama:  <input type="text" ng-model="desmama.dtDesmama"/></p>
+   Idade:  <input type="text" ng-model="desmama.idade"/></p>
+   Observação:  <input type="text" ng-model="desmama.obs"/></p>
+   
+   <input type="button" value="Novo" ng-click = "limpar()" >  <input type="button" value="Salvar" ng-click = "salvar()" > <input type="button" value="Apagar" ng-click = "apagar(desmama)" ></p>
+    
+    
+         <table border = "1">
+                <tr ng-repeat = "desmama in desmamas">
+                     <td ng-click = "selecionar(desmama)" ng-bind = "desmama.identifier"> </td>
+                    <td >{{desmama.dtDesmama}} </td>
+                    <td >{{desmama.idade}} </td>
+                    <td ng >{{desmama.obs}} </td>
+                    
+                </tr>
+         </table>
+    
+    </div>
+</body>

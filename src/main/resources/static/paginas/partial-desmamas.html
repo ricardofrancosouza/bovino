@@ -1,0 +1,43 @@
+ <style type="text/css">
+button {
+	width: 80px;
+}
+
+input {
+	width: 100%; 
+}
+
+.tam1 {width: 32px; height: 32px;}
+</style>
+ 
+ 
+ <div>   
+   Codigo:    <input type="number" ng-model="desmama.identifier" class="form-control" id="id" placeholder="id"/></p>
+   Data Desmama:  <input type="datetime" ng-model="desmama.dtDesmama" class="form-control" id="Data Desmama" placeholder="Data Desmama"/></p>
+   Idade:  <input type="text" ng-model="desmama.idade" class="form-control" id="Idade" placeholder="Idade"/></p>
+   Observação:  <input type="text" ng-model="desmama.obs" class="form-control" id="Observação" placeholder="Observação"/></p>
+ 
+ <button class="btn btn-primary"  ng-click = "limpar()" >Novo</button>  <button class="btn btn-primary" ng-click = "salvar()" >Salvar</button>  <button class="btn btn-primary" ng-click = "apagar(desmama)" >Apagar</button></p>
+    
+    	<div class="table-responsive" >
+    	<!-- <form>
+	    	<label class="checkbox-inline" ng-repeat ="bov in bovinos">
+	    	     <input name="selecaobov" type="checkbox" ng-click = "addToSearchedProfile(bov.identifier)" ng-checked="isChecked(bov)" > {{bov.codbarras}}   	    
+	    	</label></br>
+    	</form> -->
+    	<!-- <select ng-options = "bov.identifier as bov.codbarras for bov in bovinos" ng-model = "bovino.identifier" ></select> -->
+        Bovinos<br>
+        <select   ng-options = "bov.identifier as bov.codbarras for bov in bovinos" ng-model = "bovino.identifier"  multiple="multiple"></select>
+         <table class="table table-striped table-hover table-bordered table-condensed">
+                <tr ng-repeat = "desmama in desmamas" style="cursor: pointer;">
+                     <td ng-click = "selecionar(desmama)" ng-bind = "desmama.identifier"> </td>
+                    <td >{{desmama.dtDesmama}} </td>
+                    <td >{{desmama.idade}} </td>
+                    <td ng >{{desmama.obs}} </td>
+                    
+                </tr>
+         </table>
+    </div>
+    <div class="table-responsive">
+    
+    </div>

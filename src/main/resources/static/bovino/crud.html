@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script src="../angular.min.js"></script>
+<script src="controller.js"></script>
+</head>
+<body ng-app="app">
+ <div ng-controller = "BovinoCtrl">   
+   Codigo:    <input type="number" ng-model="bovino.codigo"/></p>
+   Apelido:  <input type="text" ng-model="bovino.apelido"/></p>
+   
+   <input type="button" value="Novo" ng-click = "limpar()" >  <input type="button" value="Salvar" ng-click = "salvar()" > <input type="button" value="Apagar" ng-click = "apagar()" ></p>
+    
+    
+         <table border = "1">
+                <tr ng-repeat = "bovino in bovinos">
+                     <td ng-bind = "bovino.codigo"> </td>
+                    <td ng-click = "selecionar(bovino)">{{bovino.apelido}} </td>
+                   
+                </tr>
+         </table>
+    
+    </div>
+</body>

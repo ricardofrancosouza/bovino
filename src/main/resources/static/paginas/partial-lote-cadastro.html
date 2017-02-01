@@ -1,0 +1,157 @@
+ <style type="text/css">
+        .navbar { margin:auto }
+        .button { margin:auto} 
+        .ui-sref{text-align:right;}
+		ul.none {
+		list-style-type: none;
+		}
+        #cabecalho{text-align:center;}
+		#textomenu{color:white}
+        a{text-align:left;}
+        #menu{margin-right: auto; 
+               height:1500px;
+			   background:green;
+			   }
+		 .checkboxdemoBasicUsage div.flex-xs {
+            min-height: 40px; 
+			width: 4px;
+			height:4px;
+			}	 
+		#botaocontrole{ align:center;}	
+         #cabecalho{text-align:center; background:green; width:100% }
+         #textocabecalho{font-size:42px; color :white;list-style-type: none; }		 
+                
+    </style>
+	<title>Lote Cadastro</title>
+ 
+<div id="cabecalho"  >
+   <h3 id="textocabecalho" ><b>Cadastro de Lote</b></h3>    
+
+</div>
+<div class= "container - fluid" >
+		 <div class ="row" >
+
+               
+                       Nº Lote:             <input type="number" ng-model="lote.identifier" readonly="true" class="form-control" id="id" placeholder="Nº Lote"/></p>
+					   Nome Lote:           <input type="text" ng-model="lote.nmlote" class="form-control" id="nmlote" placeholder="Nome Lote"/></p>
+					   Data:    <input type="date" ng-model="lote.dtcriacao" class="form-control" id="dtcriacao" placeholder="Data"/>
+					     <div class ="tabs-container">
+								<label>Ativo:<input  type = "checkbox"  ng-model="lote.ativo"/></label> 
+						 </div>
+				
+				<div class ="col-sm-12">
+				</div>
+		        <div class ="row">		
+      				<div class ="col-sm-4">
+					    <label>Bovinos Sem Lote</label>
+						<table class="table table-striped table-hover table-bordered table-condensed">
+						   		 <th>Codigo Bovino</th>
+								 <th>Nome Bovino</th>
+								 <th>Idade</th>
+							   <tr ng-repeat = "bovino in bovinos" style="cursor: pointer;">
+								 <td  ng-click = "selecionar(bovino)" ng-bind = "bovino.identifier"> </td>
+								 <td > {{bovino.apelido}}  </td>
+								 <td > {{bovino.dtEntrada}} </td>
+						  	   </tr>
+						 </table>
+                         <button type="button" class="btn  btn-success" data-toggle="modal" data-target="#mymodal" >ADD Bovino</button></p>
+							<div class="modal fade" id="mymodal">
+								   <div class = "modal-dialog">
+										<div class="modal-content">
+											 <div class="modal-header">
+											 <h3>Novo Bovino</h3>
+											 </div>
+											 <div class = "modal-body">
+												    Codigo:             <input type="number" ng-model="bovino.identifier" class="form-control" id="id" placeholder="id"/></p>
+												   Apelido:             <input type="text" ng-model="bovino.apelido" class="form-control" id="apelido" placeholder="apelido"/></p>
+												   Codigo de Barras:    <input type="text" ng-model="bovino.codbarras" class="form-control" id="codbarras" placeholder="codigo de barras"/></p>
+												   Cor da Pelagem:      <input type="text" ng-model="bovino.corpelagem" class="form-control" id="pelagem" placeholder="pelagem"/></p>
+												   Valor Custo:        <input type="text" ng-model="bovino.vlrCusto" class="form-control" id="dtentrada" placeholder="Valor custo"/></p>
+												   Nº Chip Eletronico:             <input type="text" ng-model="bovino.nrChipeletronico" class="form-control" id="apelido" placeholder="Nº Chip"/></p>
+												   Nº SISBOV:    <input type="text" ng-model="bovino.nrManejosisbov" class="form-control" id="codbarras" placeholder="Nº SISBOV"/></p>
+												   Data Entrada:        <input type="date" ng-model="bovino.dtEntrada" class="form-control" id="dtentrada" placeholder="Data Entrada"/></p>
+												   Data Nascimento:        <input type="text" ng-model="bovino.dtNascimento" class="form-control" id="dtentrada" placeholder="Data Nascimento"/></p>
+
+												   <div class ="tabs-container">
+														<label>Ativo:<input type = "checkbox"  ng-model="bovino.ativo"/></label> 
+												   </div>
+												   <form action="" class="" >
+													  <label>Macho <input type = "radio" value="Macho" ID="rbm"   ng-model="bovino.sexo"/> </label> 
+													  <label> Femea <input type = "radio" value="Femea" ID="rbf" ng-model="bovino.sexo"/></label> 
+												   </form>   
+													  <div class="table-responsive" >
+													  <caption>Status Bovino</caption>
+													  <table class="table table-striped table-hover table-bordered table-condensed">
+																<tr  style="cursor: pointer;">
+																	<tr>
+																	  <!-- <th>Cod Status</th> -->
+																	   <th>Doador</th>
+																	   <th>Fertilidade</th>
+																	   <th>Mamando</th>
+																	   <th>Mamando</th>
+																	</tr>
+																  <!--   <td >{{bovino.statusbovino.identifier}} </td> -->
+																	<td > <input type="checkbox" ng-model="bovino.statusbovino.flgDoador"      /> </td>
+																	<td ><input  type="checkbox" ng-model="bovino.statusbovino.flgFertilidade" /> </td>
+																	<td  ><input type="checkbox" ng-model="bovino.statusbovino.flgMamando"     /> </td>
+																	<td ><input  type="checkbox" ng-model="bovino.statusbovino.flgVazia"       /> </td>
+																</tr>
+														 </table>
+													   
+													</div>
+												 
+												 
+													  <div class="table-responsive" >
+													  <caption>Desmama</caption>
+													  <table class="table table-striped table-hover table-bordered table-condensed" read-only="true">
+																<tr  style="cursor: pointer;">
+																	<tr>
+																	   <th>Cod Desmama</th>
+																	   <th>Data Desmama</th>
+																	   <th>Idade</th>
+																	   <th>OBS</th>
+																	</tr>
+																	<td  ng-bind = "bovino.desmamas.identifier"> </td>
+																	<td >{{bovino.desmamas.dtDesmama}} </td>
+																	<td >{{bovino.desmamas.idade}} </td>
+																	<td >{{bovino.desmamas.obs}} </td>
+																	
+																</tr>
+														 </table>
+													</div>	
+											 </div>
+											 <div class="modal-footer">
+												<button type="button" class ="btn btn-default" data-dismiss="modal">Fechar</button>
+												<button type="button" class ="btn btn-default" ng-click="salvarPeso()">Salvar</button>
+											
+											 </div>
+										</div>
+								   </div>
+							   </div>
+						 <button type="button" class ="btn btn-primary" ng-click="adicionarBovino">Salvar</button>
+						 <button type="button" class ="btn btn-danger" ng-click="adicionarBovino">Cancelar</button></p>						 
+					</div>	
+					<div class = "col-sm-1">
+					        </br></br></br></br>
+					       <button type="button" id="botaocontrole" class="btn btn-success" ng-click="adicionarbovino()">>></button></p>
+                           <button type="button" id="botaocontrole"  class="btn btn-success" ng-click="removerBovino()"><<</button></p>
+					</div>
+					<div class ="col-sm-4">
+					    <label>Bovinos Selecionados</label>
+						<table class="table table-striped table-hover table-bordered table-condensed">
+									<th>Codigo Bovino</th>
+									<th>Nome Bovino</th>
+									<th>Idade</th>
+								  <tr tr ng-repeat = "bovino1 in selecionados" style="cursor: pointer;">
+									 <td > {{bovino1.identifier}} </td>
+									 <td > {{bovino1.apelido}}    </td>
+									 <td > {{bovino1.dtEntrada}}  </td>
+						         </tr>
+						 </table>	
+					</div>	
+
+				</div>	
+				
+			
+      </div>
+</div>
